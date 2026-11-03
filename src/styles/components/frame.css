@@ -1,0 +1,14 @@
+.frame{
+    background-color: aliceblue;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock-layout {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { getClockData } from "../../utils/getClockData";
-import { countries } from "../../data/countries"
+import { TimeZoneContext } from "../../context/TimeZoneContext";
+import { ClockDataContext } from "../../context/ClockDataContext";
 
 const Screen = () => {
-  const [timeZone, setTimeZone] = useState("Europe/Berlin");
-  const [clockData, setClockData] = useState(null);
 
+  const {timeZone} = useContext(TimeZoneContext);
+  const {clockData, setClockData} = useContext(ClockDataContext);
+
+  
   useEffect(() => {
     const updateClock = () => {
       setClockData(getClockData(timeZone));
@@ -19,19 +22,11 @@ const Screen = () => {
   }, [timeZone]);
 
   return (
-    <>
+    <div className="screen">
       <h1>{clockData?.time}</h1>
       <p>{clockData?.date}</p>
       <p>{timeZone.replace("/", " ")}</p>
-
-      <select value={timeZone} onChange={(e) => setTimeZone(e.target.value)}>
-        {countries.map((country) => (
-          <option key={country.timeZone} value={country.timeZone}>
-            {country.flag} {country.name}
-          </option>
-        ))}
-      </select>
-    </>
+    </div>
   );
 };
 
