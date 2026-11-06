@@ -4,7 +4,9 @@ import { ClockDataContext } from "./context/ClockDataContext";
 import { TimeZoneContext } from "./context/TimeZoneContext";
 
 function App() {
-  const [timeZone, setTimeZone] = useState("Europe/Berlin");
+  const [timeZone, setTimeZone] = useState(
+    Intl.DateTimeFormat().resolvedOptions().timeZone
+);
   const [clockData, setClockData] = useState(null);
 
   return (
