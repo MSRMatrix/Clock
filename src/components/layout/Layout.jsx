@@ -3,18 +3,16 @@ import Screen from "../screen/Screen";
 import Zone from "../zone/Zone";
 
 const Layout = () => {
-
   return (
-    <>
+    <div className="layout">
       <Frame>
         <div className="clock-layout">
-          <Screen
-          />
+          <Screen />
 
           <Zone />
         </div>
       </Frame>
-    </>
+    </div>
   );
 };
 
